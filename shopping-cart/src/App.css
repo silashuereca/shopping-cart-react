@@ -23,15 +23,15 @@ h1 {
 .cartbtn-container p {
  color: white;
  border: 1px solid white;
- padding: 10px 15px
+ padding: 10px 15px;
+ cursor: pointer;
 }
 
 /* Cart component */
 .cart-container {
-  width: 35%;
+  width: 450px;
   height: 100vh;
   position: fixed;
-  right: 0;
   background-color: #2c3e50;
   color: white;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
