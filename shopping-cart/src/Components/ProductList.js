@@ -10,10 +10,10 @@ const ProductList = (props) => {
                 return (
                     <div key={item.key} >
                         <h3>{item.product}</h3> 
-                        <p>{item.price}</p>
+                        <p>{item.price.toFixed(2)}</p>
                         <button 
                         onClick={props.onAddProduct} 
-                        value={item.product + ' ' + item.price}
+                        value={`${item.product } ${item.price}`}
                         >Buy</button>
                         </div>
                 )

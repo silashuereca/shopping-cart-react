@@ -10,12 +10,12 @@ class App extends Component {
   state = {
     cartPosition: -500,
     products: [
-      {product: 'Shoes', price: 9.99, key: 1},
-      {product: 'Pants', price: 45.99, key: 2},
-      {product: 'Shirt', price: 25.99, key: 3},
-      {product: 'Hat', price: 45.50, key: 4},
-      {product: 'Socks', price: 13.70, key: 5},
-      {product: 'Boxers', price: 25.89, key: 6}
+      {product: 'Shoes', price: 9.00, key: 1},
+      {product: 'Pants', price: 45.00, key: 2},
+      {product: 'Shirt', price: 25.00, key: 3},
+      {product: 'Hat', price: 45.00, key: 4},
+      {product: 'Socks', price: 13.00, key: 5},
+      {product: 'Boxers', price: 25.00, key: 6}
     ],
     cartProducts: [],
   }
@@ -37,22 +37,40 @@ class App extends Component {
 // Add product to cart
 handleAddProduct = (e) => {
 const value = e.target.value
-const newArray = value.split(' ');
+const splitArray = value.split(' ');
+const order = {
+  product: splitArray[0],
+  price: parseInt(splitArray[1]).toFixed(2),
+  key: Date.now()
+}
   
-  const newArray = [...this.state.cartProducts, {value}]
+  const newArray = [...this.state.cartProducts, order]
 
   this.setState({
     cartProducts: newArray
   })
-  
+}
+
+deleteItem = (key) => {
+  const filterItems = this.state.cartProducts.filter(item => {
+    return item.key !== key;
+  })
+
+  this.setState({
+    cartProducts: filterItems,
+  })
 }
   
   render () {
     console.log(this.state.cartProducts)
     return (
       <div className="App">
-      <CartBtn onOpen={this.handleOpen}/>
-      <Cart position={this.state.cartPosition} onClose={this.handleClose}/>
+      <CartBtn onOpen={this.handleOpen} numberOfOrders={this.state.cartProducts}/>
+      <Cart 
+      position={this.state.cartPosition} 
+      onClose={this.handleClose} 
+      orders={this.state.cartProducts}
+      deleteItem={this.deleteItem}/>
       <Header />
       <ProductList onAddProduct={this.handleAddProduct} products={this.state.products}/>
     </div>
