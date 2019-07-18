@@ -14,7 +14,7 @@ const Cart = (props) => {
         <div className="cart-container" style={{right: `${props.position}px`}}>
             <div onClick={props.onClose} className="close"></div>
             <div className="orders"></div>
-            <p className="total">Total: ${sum}</p>
+            <p className="total">Total: ${sum.toFixed(2)}</p>
 
             <div className="order-container">
                 {props.orders.map(item => {
@@ -23,7 +23,7 @@ const Cart = (props) => {
                         <h4>{item.product}</h4>
                         </div>
                         <div className="price-container">
-                        <p className="delete" onClick={() => props.deleteItem(item.key)}>Delete</p>
+                        <p className="delete" onClick={() => props.deleteItem(item.key)}>Remove</p>
                         <p className="price">{item.price}</p>
                         </div>
                     </div>)
