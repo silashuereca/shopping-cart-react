@@ -2,7 +2,10 @@
   "name": "shopping-cart",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://silashuereca.github.io/shopping-cart-react/shopping-cart",
+  "engines": {
+    "node": "12.6.0",
+    "npm": "6.9.0"
+  },
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
